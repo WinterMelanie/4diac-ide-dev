@@ -15,6 +15,7 @@
  *******************************************************************************/
 package org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.properties;
 
+import org.eclipse.fordiac.ide.model.libraryElement.Primitive;
 import org.eclipse.fordiac.ide.model.libraryElement.ServiceTransaction;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.viewers.IFilter;
@@ -27,7 +28,7 @@ public class TransactionFilter implements IFilter {
 			toTest = ((EditPart) toTest).getModel();
 		}
 
-		return (toTest instanceof ServiceTransaction);
+		return (toTest instanceof ServiceTransaction || toTest instanceof Primitive);
 	}
 
 }

@@ -16,6 +16,7 @@
 package org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.properties;
 
 import org.eclipse.fordiac.ide.model.libraryElement.InputPrimitive;
+import org.eclipse.fordiac.ide.model.libraryElement.ServiceTransaction;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.viewers.IFilter;
 
@@ -27,7 +28,7 @@ public class InputPrimitiveFilter implements IFilter {
 			toTest = ((EditPart) toTest).getModel();
 		}
 
-		return (toTest instanceof InputPrimitive);
+		return (toTest instanceof InputPrimitive || toTest instanceof ServiceTransaction);
 	}
 
 }

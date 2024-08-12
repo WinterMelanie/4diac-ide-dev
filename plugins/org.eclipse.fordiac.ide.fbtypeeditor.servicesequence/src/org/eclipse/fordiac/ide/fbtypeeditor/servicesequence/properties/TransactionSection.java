@@ -23,6 +23,7 @@ import org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.commands.ChangePrimi
 import org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.commands.ChangePrimitiveParameterCommand;
 import org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.commands.CreateOutputPrimitiveCommand;
 import org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.commands.DeleteOutputPrimitiveCommand;
+import org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.editparts.AbstractPrimitiveEditPart;
 import org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.editparts.TransactionEditPart;
 import org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.widgets.InterfaceSelectorButton;
 import org.eclipse.fordiac.ide.gef.properties.AbstractSection;
@@ -249,6 +250,7 @@ public class TransactionSection extends AbstractSection {
 
 	@Override
 	protected ServiceTransaction getType() {
+
 		return (ServiceTransaction) type;
 	}
 
@@ -283,6 +285,12 @@ public class TransactionSection extends AbstractSection {
 		}
 		if (input instanceof ServiceTransaction) {
 			return input;
+		}
+		if (input instanceof final AbstractPrimitiveEditPart ep) {
+			return ep.getModel().getServiceTransaction();
+		}
+		if (input instanceof Primitive) {
+			return ((Primitive) input).getServiceTransaction();
 		}
 		return null;
 	}

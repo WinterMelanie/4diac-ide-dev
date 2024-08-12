@@ -15,9 +15,11 @@
 package org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.properties;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.fordiac.ide.fbtypeeditor.servicesequence.editparts.OutputPrimitiveEditPart;
 import org.eclipse.fordiac.ide.model.libraryElement.Event;
 import org.eclipse.fordiac.ide.model.libraryElement.FBType;
 import org.eclipse.fordiac.ide.model.libraryElement.OutputPrimitive;
+import org.eclipse.fordiac.ide.model.libraryElement.Primitive;
 
 public class OutputPrimitiveSection extends AbstractPrimitiveSection {
 
@@ -29,5 +31,17 @@ public class OutputPrimitiveSection extends AbstractPrimitiveSection {
 	@Override
 	protected EList<Event> getRelevantEvents(final FBType fb) {
 		return fb.getInterfaceList().getEventOutputs();
+	}
+
+	@Override
+	protected Primitive getInputType(final Object input) {
+		if ((input instanceof OutputPrimitiveEditPart)) {
+			return ((OutputPrimitiveEditPart) input).getModel();
+		}
+		if ((input instanceof OutputPrimitive)) {
+			return ((OutputPrimitive) input);
+		}
+
+		return null;
 	}
 }

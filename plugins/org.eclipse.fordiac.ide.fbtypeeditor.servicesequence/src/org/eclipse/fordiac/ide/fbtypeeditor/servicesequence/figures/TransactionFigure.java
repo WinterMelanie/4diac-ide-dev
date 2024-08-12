@@ -26,7 +26,7 @@ import org.eclipse.swt.SWT;
 public final class TransactionFigure extends Figure {
 	public TransactionFigure() {
 		final FlowLayout layout = new FlowLayout();
-		final AdvancedLineBorder border = new AdvancedLineBorder(PositionConstants.NORTH, SWT.LINE_DASH);
+		final AdvancedLineBorder border = new AdvancedLineBorder(PositionConstants.SOUTH, SWT.LINE_DASH);
 		border.setColor(ColorManager.getColor(ServiceConstants.TEXT_BLUE));
 		setBorder(border);
 		setLayoutManager(layout);
